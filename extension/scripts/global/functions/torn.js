@@ -1348,6 +1348,7 @@ const LINKS = {
 	organizedCrimes: "https://www.torn.com/factions.php?step=your#/tab=crimes",
 	gym: "https://www.torn.com/gym.php",
 	companyEmployees: "https://www.torn.com/companies.php#/option=employees",
+	rankedWar: "https://www.torn.com/factions.php?step=your&type=1#/war/rank",
 };
 
 const ITEM_TYPES = [

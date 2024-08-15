@@ -444,6 +444,7 @@ const DEFAULT_STORAGE = {
 				cooldownEndTimes: new DefaultSetting({ type: "boolean", defaultValue: true }),
 				companyAddictionLevel: new DefaultSetting({ type: "boolean", defaultValue: true }),
 				showJobPointsToolTip: new DefaultSetting({ type: "boolean", defaultValue: true }),
+				rankedWarTimer: new DefaultSetting({ type: "boolean", defaultValue: true }),
 			},
 			popup: {
 				dashboard: new DefaultSetting({ type: "boolean", defaultValue: true }),
