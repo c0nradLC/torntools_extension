@@ -28,32 +28,34 @@
 		addInformationSection();
 		showInformationSection();
 
+		if (!factiondata?.ranked_wars) return;
+		
 		const rankedWarTimerElement  = document.newElement({ type: "span", class: "countdown" });
-		if (factiondata?.ranked_wars) {
-			const rankedWarId = Object.keys(factiondata.ranked_wars)[0];
-			
-			if (rankedWarId <= 0 || !rankedWarId) return; 
-			
-			const rankedWarStartTime = TO_MILLIS.SECONDS * factiondata.ranked_wars[rankedWarId].war.start;
-			const timeLeft = rankedWarStartTime - Date.now();
+		const rankedWarId = Object.keys(factiondata.ranked_wars)[0];
+		
+		if (rankedWarId <= 0 || !rankedWarId) return; 
+		
+		const rankedWarStartTime = TO_MILLIS.SECONDS * factiondata.ranked_wars[rankedWarId].war.start;
+		const rankedWarEndTime = TO_MILLIS.SECONDS * factiondata.ranked_wars[rankedWarId].war.end;
+		const timeLeft = rankedWarStartTime - Date.now();
 
-			if (timeLeft > 0) {
-				if (timeLeft <= TO_MILLIS.HOURS * 24)
-					rankedWarTimerElement.classList.add('preparation-24hs-remaining');
+		if (timeLeft > 0) {
+			if (timeLeft <= TO_MILLIS.HOURS * 24)
+				rankedWarTimerElement.classList.add('preparation-24hs-remaining');
 
-				rankedWarTimerElement.textContent = formatTime({ milliseconds: timeLeft }, { type: "wordTimer", extraShort: true, showDays: true });
-				rankedWarTimerElement.dataset.seconds = timeLeft.dropDecimals();
-				rankedWarTimerElement.dataset.end = rankedWarStartTime;
-				rankedWarTimerElement.dataset.timeSettings = JSON.stringify({ type: "wordTimer", extraShort: true, showDays: true });
+			rankedWarTimerElement.textContent = formatTime({ milliseconds: timeLeft }, { type: "wordTimer", extraShort: true, showDays: true });
+			rankedWarTimerElement.dataset.seconds = timeLeft.dropDecimals();
+			rankedWarTimerElement.dataset.end = rankedWarStartTime;
+			rankedWarTimerElement.dataset.timeSettings = JSON.stringify({ type: "wordTimer", extraShort: true, showDays: true });
 
-				countdownTimers.push(rankedWarTimerElement);
-			}
-			else {
-				rankedWarTimerElement.textContent = "Ongoing";
-				rankedWarTimerElement.classList.add("ongoing");
-			}
+			countdownTimers.push(rankedWarTimerElement);
 		}
-		else rankedWarTimerElement.textContent = "No current Ranked War.";
+		else if (rankedWarEndTime > 0)
+			rankedWarTimerElement.textContent = "No active RW.";
+		else {
+			rankedWarTimerElement.textContent = "Ongoing";
+			rankedWarTimerElement.classList.add("ongoing");
+		}
 
 		document.find(".tt-sidebar-information").appendChild(
 			document.newElement({
