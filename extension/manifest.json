@@ -172,6 +172,7 @@
 			"css": [
 				"scripts/features/oc-time/ttOCTime.css",
 				"scripts/features/faction-oc-time/ttFactionOCTime.css",
+				"scripts/features/ranked-war-time/ttRankedWarTime.css",
 				"scripts/features/custom-links/ttCustomLinks.css",
 				"scripts/features/update-notice/ttUpdateNotice.css",
 				"scripts/features/sidebar-notes/ttSidebarNotes.css",

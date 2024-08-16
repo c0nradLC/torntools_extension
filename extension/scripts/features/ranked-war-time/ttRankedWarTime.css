@@ -1,0 +1,15 @@
+.tt-sidebar-information .preparation-24hs-remaining {
+    color: var(--tt-color-orange);
+}
+
+.tt-sidebar-information .ongoing {
+    color: var(--tt-color-light-green);
+}
+
+.tt-sidebar-information .ongoing-24hs-remaining {
+    color: var(--tt-color-orange);
+}
+
+.tt-sidebar-information .ongoing-12hs-remaining {
+    color: var(--tt-color-red);
+}

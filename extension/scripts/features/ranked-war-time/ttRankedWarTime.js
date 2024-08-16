@@ -40,11 +40,19 @@
 				if (rankedWarEndTime === 0) {
 					timeLeft = rankedWarStartTime - Date.now();
 
+					if (timeLeft <= TO_MILLIS.HOURS * 24)
+						rankedWarTimerElement.classList.add('preparation-24hs-remaining');
+
 					rankedWarTimerElement.textContent = formatTime({ milliseconds: timeLeft }, { type: "wordTimer", extraShort: true, showDays: true });
 					rankedWarTimerElement.dataset.end = rankedWarStartTime;
 				}
 				else {
 					timeLeft = rankedWarEndTime - Date.now();
+
+					if (timeLeft <= TO_MILLIS.HOURS * 12)
+						rankedWarTimerElement.classList.add('ongoing-12hs-remaining');
+					else if (timeLeft <= TO_MILLIS.HOURS * 24)
+						rankedWarTimerElement.classList.add('ongoing-24hs-remaining');
 
 					rankedWarTimerElement.textContent = formatTime({ milliseconds: timeLeft }, { type: "wordTimer", extraShort: true, showDays: true });
 					rankedWarTimerElement.dataset.end = rankedWarEndTime;
