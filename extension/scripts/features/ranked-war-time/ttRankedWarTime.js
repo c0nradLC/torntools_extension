@@ -12,7 +12,7 @@
         showRankedWarTimer,
 		removeRankedWarTimer,
 		{
-			storage: ["settings.pages.sidebar.removeRankedWarTimer", "factiondata.ranked_wars"],
+			storage: ["settings.pages.sidebar.rankedWarTimer", "factiondata.ranked_wars"],
 		},
 		() => {
 			if (!hasAPIData()) return "No API access.";
